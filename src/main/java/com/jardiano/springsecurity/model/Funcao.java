@@ -6,17 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Role {
+public class Funcao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
 
-    public Role() {
+    public Funcao() {
     }
 
-    public Role(String name) {
+    public Funcao(String name) {
         this.name = name;
     }
 
@@ -38,7 +38,7 @@ public class Role {
 
     @Override
     public String toString() {
-        return "Role{" +
+        return "Funcao{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

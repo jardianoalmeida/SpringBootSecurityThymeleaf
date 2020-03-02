@@ -19,7 +19,7 @@ public class Usuario {
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+    private Collection<Funcao> funcaos;
 
     public Usuario() {
     }
@@ -30,11 +30,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public Usuario(String nome, String email, String password, Collection<Role> roles) {
+    public Usuario(String nome, String email, String password, Collection<Funcao> funcaos) {
         this.nome = nome;
         this.email = email;
         this.password = password;
-        this.roles = roles;
+        this.funcaos = funcaos;
     }
 
     public Long getId() {
@@ -69,12 +69,12 @@ public class Usuario {
         this.password = password;
     }
 
-    public Collection<Role> getRoles() {
-        return roles;
+    public Collection<Funcao> getFuncaos() {
+        return funcaos;
     }
 
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
+    public void setFuncaos(Collection<Funcao> funcaos) {
+        this.funcaos = funcaos;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class Usuario {
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", roles=" + roles +
+                ", roles=" + funcaos +
                 '}';
     }
 }

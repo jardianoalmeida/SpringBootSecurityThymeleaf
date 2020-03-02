@@ -1,6 +1,6 @@
 package com.jardiano.springsecurity.config;
 
-import com.jardiano.springsecurity.service.UserService;
+import com.jardiano.springsecurity.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService userService;
+    private UsuarioService usuarioService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -50,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(userService);
+        auth.setUserDetailsService(usuarioService);
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }

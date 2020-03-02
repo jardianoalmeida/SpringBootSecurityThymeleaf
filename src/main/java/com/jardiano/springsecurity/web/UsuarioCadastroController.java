@@ -1,8 +1,8 @@
 package com.jardiano.springsecurity.web;
 
 import com.jardiano.springsecurity.model.Usuario;
-import com.jardiano.springsecurity.service.UserService;
-import com.jardiano.springsecurity.web.dto.UserRegistrationDto;
+import com.jardiano.springsecurity.service.UsuarioService;
+import com.jardiano.springsecurity.web.dto.UsuarioRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +16,14 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/registration")
-public class UserRegistrationController {
+public class UsuarioCadastroController {
 
     @Autowired
-    private UserService userService;
+    private UsuarioService usuarioService;
 
     @ModelAttribute("user")
-    public UserRegistrationDto userRegistrationDto() {
-        return new UserRegistrationDto();
+    public UsuarioRegistrationDto userRegistrationDto() {
+        return new UsuarioRegistrationDto();
     }
 
     @GetMapping
@@ -32,10 +32,10 @@ public class UserRegistrationController {
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
+    public String registerUserAccount(@ModelAttribute("user") @Valid UsuarioRegistrationDto userDto,
                                       BindingResult result){
 
-        Usuario existing = userService.findByEmail(userDto.getEmail());
+        Usuario existing = usuarioService.findByEmail(userDto.getEmail());
         if (existing != null){
             result.rejectValue("email", null, "There is already an account registered with that email");
         }
@@ -44,7 +44,7 @@ public class UserRegistrationController {
             return "registration";
         }
 
-        userService.save(userDto);
+        usuarioService.save(userDto);
         return "redirect:/registration?success";
     }
 

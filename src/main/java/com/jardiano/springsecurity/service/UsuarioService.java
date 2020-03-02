@@ -1,12 +1,12 @@
 package com.jardiano.springsecurity.service;
 
 import com.jardiano.springsecurity.model.Usuario;
-import com.jardiano.springsecurity.web.dto.UserRegistrationDto;
+import com.jardiano.springsecurity.web.dto.UsuarioRegistrationDto;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService extends UserDetailsService {
+public interface UsuarioService extends UserDetailsService {
 
     Usuario findByEmail(String email);
 
-    Usuario save(UserRegistrationDto registration);
+    Usuario save(UsuarioRegistrationDto registration);
 }
